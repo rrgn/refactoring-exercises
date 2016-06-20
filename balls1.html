@@ -1,0 +1,83 @@
+<!--
+# Data Clumps
+
+Refactor the following code to remove code duplication and to
+make adding additonal balls easy.
+
+1. Extract a function to draw a ball of a given position, color, and size
+2. Use objects to group related variables and turn them into
+properties of objects, update the draw-a-ball function to take the object as argument
+3. Use an array to hold all objects that represent balls.
+4. Instead of using object literals, create a Ball type, and use the `new` statement to create new balls.
+5. Put 10 balls on the canvas.
+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Balls</title>
+    <style>#canvas { border: 2px solid black; } body { text-align: center; }</style>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var ball1 = {
+      x: 100,
+      y: 100,
+      radius: 10,
+      color: 'red'
+    };
+
+    var ball2 = {
+      x: 300,
+      y: 400,
+      radius: 30,
+      color: 'green'
+    };
+    // attributes for ball 1
+    // var x1 = 100;
+    // var y1 = 100;
+    // var radius1 = 10;
+    // var color1 = 'red';
+    //
+    // // attributes for ball 2
+    // var x2 = 300;
+    // var y2 = 400;
+    // var radius2 = 30;
+    // var color2 = 'green';
+    function main() {
+      // // draw ball 1
+      // ctx.beginPath();
+      // ctx.fillStyle = color1;
+      // ctx.ellipse(x1, y1, radius1, radius1, 0, 0, Math.PI * 2);
+      // ctx.fill();
+      //
+      // // draw ball 2
+      // ctx.beginPath();
+      // ctx.fillStyle = color2;
+      // ctx.ellipse(x2, y2, radius2, radius2, 0, 0, Math.PI * 2);
+      // ctx.fill();
+      drawBall(ball1);
+      drawBall(ball2);
+
+      // continue the loop
+      requestAnimationFrame(main);
+    }
+    main();
+
+    function drawBall(ball) {
+      ctx.beginPath();
+      ctx.fillStyle = ball.color;
+      ctx.ellipse(ball.x, ball.y, ball.radius, ball.radius, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+
+
+    </script>
+  </body>
+</html>

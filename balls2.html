@@ -1,0 +1,120 @@
+<!--
+Just like the first balls challenge, refactor the following code to remove code duplication and to make adding additonal balls easy. This
+time each ball has its own X and Y direction speed and bounces around
+in the canvas. Once you have finished the refactoring, make 10
+bouncing balls.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Balls</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var ball1 = {
+      x: 100,
+      y: 100,
+      radius: 10,
+      speedX: 5,
+      speedY: -4,
+      color: 'red'
+    };
+
+    var ball2 = {
+      x: 300,
+      y: 400,
+      radius: 30,
+      speedX: 3,
+      speedY: 3,
+      color: 'green'
+    };
+
+    var ball3 = {
+      x: 300,
+      y: 400,
+      radius: 98,
+      speedX: 7,
+      speedY: 2,
+      color: 'violet'
+    };
+
+    var ball4 = {
+      x: 300,
+      y: 400,
+      radius: 55,
+      speedX: 5,
+      speedY: -10,
+      color: 'blue'
+    };
+
+    var ball5 = {
+      x: 100,
+      y: 35,
+      radius: 22,
+      speedX: 9,
+      speedY: 8,
+      color: 'teal'
+    };
+
+    var ball6 = {
+      x: 79,
+      y: 250,
+      radius: 66,
+      speedX: 10,
+      speedY: -20,
+      color: 'orange'
+    };
+    // var x2 = 300;
+    // var y2 = 400;
+    // var radius2 = 30;
+    // var color2 = 'green';
+    // var speedX2 = 3;
+    // var speedY2 = 3;
+
+    function main(ball) {
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(0, 0, 500, 500);
+
+      drawBall(ball1);
+      drawBall(ball2);
+      drawBall(ball3);
+      drawBall(ball4);
+      drawBall(ball5);
+      drawBall(ball6);
+      // ctx.beginPath();
+      // ctx.fillStyle = color2;
+      // ctx.ellipse(x2, y2, radius2, radius2, 0, 0, Math.PI * 2);
+      // ctx.fill();
+      requestAnimationFrame(main);
+    }
+
+    function drawBall(ball) {
+      ball.x += ball.speedX;
+      ball.y += ball.speedY;
+      if (ball.x - ball.radius <= 0) {
+        ball.speedX = -ball.speedX;
+      }
+      if (ball.x + ball.radius >= 500) {
+        ball.speedX = -ball.speedX;
+      }
+      if (ball.y - ball.radius <= 0) {
+        ball.speedY = -ball.speedY;
+      }
+      if (ball.y + ball.radius >= 500) {
+        ball.speedY = -ball.speedY;
+      }
+
+      ctx.beginPath();
+      ctx.fillStyle = ball.color;
+      ctx.ellipse(ball.x, ball.y, ball.radius, ball.radius, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    main();
+    </script>
+  </body>
+</html>
